@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(5)->create();
         // Buat kategori dan produk
         \App\Models\Category::factory(5)->create()->each(function ($category) {
-        \App\Models\Product::factory(10)->create([
+        \App\Models\Product::factory(5)->create([
             'category_id' => $category->id
         ]);
         // Buat alamat untuk tiap user
