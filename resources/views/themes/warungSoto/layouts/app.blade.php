@@ -14,7 +14,6 @@
 </head>
 <body>
     @include('themes.warungSoto.shared.header')
-    @include('themes.warungSoto.shared.slider')
     @yield('content')
     @include('themes.warungSoto.shared.footer')
 
