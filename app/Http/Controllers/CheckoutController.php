@@ -21,6 +21,12 @@ class CheckoutController extends Controller
         ]);
 
         $product = Product::findOrFail($data['product_id']);
+        // Cek stok
+        if ($product->stock < $data['quantity']) {
+            return redirect()->back()->with('error', 'Stok produk tidak mencukupi.');
+        }
+        $product->stock -= $data['quantity'];
+        $product->save();
 
         // Hitung total harga
         $totalPrice = $product->price * $data['quantity'];
@@ -64,7 +70,8 @@ class CheckoutController extends Controller
 
         return view('checkout', compact('transaction', 'product'));
     }
-        public function success(Transactions $transaction) {
+    public function success(Transactions $transaction)
+    {
         $transaction->status = 'success';
         $transaction->save();
 
