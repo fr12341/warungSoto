@@ -17,10 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('detail_products');
-});
+// Route::get('/', function () {
+//     return view('themes.warungSoto.home');
+// });
 
+Route::get('/', [UserProductController::class, 'showProductsToUser']);
 
 //create data for admin
 Route::get('/admin/products/create', [ProductController::class, 'create'])->name('products.create');

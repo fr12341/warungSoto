@@ -57,19 +57,30 @@
                                 <input type="hidden" name="price" value="{{ $detail_product->price }}">
 
                                 <div class="row g-2 align-items-center">
-                                    <div class="col-3">
-                                        <input type="number" name="quantity" class="form-control" value="1"
-                                            min="1" max="{{ $detail_product->stock }}">
-                                    </div>
-                                    <div class="col-6 d-grid">
-                                        <button type="submit" class="btn btn-warning">
-                                            <i class="bx bx-cart-alt"></i> Beli Sekarang
-                                        </button>
-                                    </div>
-                                    <div class="col-3">
-                                        <a class="btn btn-light" href="#"><i class="bx bx-heart"></i></a>
-                                    </div>
+                                    @auth
+                                        <div class="col-3">
+                                            <input type="number" name="quantity" class="form-control" value="1"
+                                                min="1" max="{{ $detail_product->stock }}">
+                                        </div>
+
+                                        <div class="col-6 d-grid">
+                                            <button type="submit" class="btn btn-warning">
+                                                <i class="bx bx-cart-alt"></i> Beli Sekarang
+                                            </button>
+                                        </div>
+
+                                        <div class="col-3">
+                                            <a class="btn btn-light" href="#"><i class="bx bx-heart"></i></a>
+                                        </div>
+                                    @else
+                                        <div class="col-12 d-grid">
+                                            <a href="{{ route('login') }}" class="btn btn-danger">
+                                                <i class="bx bx-log-in"></i> Silakan Login untuk Membeli
+                                            </a>
+                                        </div>
+                                    @endauth
                                 </div>
+
                             </form>
                         @else
                             <div class="alert alert-danger">Stok habis</div>
@@ -120,8 +131,8 @@
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <button class="nav-link active" id="nav-details-tab" data-bs-toggle="tab"
                                 data-bs-target="#nav-details" type="button" role="tab">Details</button>
-                            <button class="nav-link" id="nav-reviews-tab" data-bs-toggle="tab" data-bs-target="#nav-reviews"
-                                type="button" role="tab">Reviews</button>
+                            <button class="nav-link" id="nav-reviews-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-reviews" type="button" role="tab">Reviews</button>
                         </div>
                     </nav>
                     <div class="tab-content p-3">

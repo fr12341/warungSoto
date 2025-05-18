@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,16 +10,20 @@
     <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js','resources/css/themes/main.css'])
-    <title>IndoToko: Official Site</title>
+    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/themes/main.css'])
+    <title>Warung Soto</title>
 </head>
+
 <body>
     @include('themes.warungSoto.shared.header')
-    @yield('content')
+    {{-- @yield('content') --}}
+    <main class="py-5 mt-5">
+        @yield('content')
+    </main>
+
     @include('themes.warungSoto.shared.footer')
-
-
     <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     @yield('scripts')
 </body>
+
 </html>
