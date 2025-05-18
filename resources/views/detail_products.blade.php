@@ -9,8 +9,8 @@
                     <div id="product-images" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="{{ asset('storage/' . $detail_product->image) }}" alt="{{ $detail_product->name }}"
-                                    class="img-fluid rounded shadow w-75 mx-auto d-block">
+                                <img src="{{ asset('storage/' . $detail_product->image) }}"
+                                    alt="{{ $detail_product->name }}" class="img-fluid rounded shadow w-75 mx-auto d-block">
                             </div>
                             {{-- Jika nanti ada multiple images, tinggal tambahkan carousel-item lainnya --}}
                         </div>
@@ -51,16 +51,20 @@
                         <hr class="my-4">
 
                         @if ($detail_product->stock > 0)
-                            <form action="" method="POST">
+                            <form action="{{ route('checkout-process') }}" method="POST">
                                 @csrf
+                                <input type="hidden" name="product_id" value="{{ $detail_product->id }}">
+                                <input type="hidden" name="price" value="{{ $detail_product->price }}">
+
                                 <div class="row g-2 align-items-center">
                                     <div class="col-3">
                                         <input type="number" name="quantity" class="form-control" value="1"
                                             min="1" max="{{ $detail_product->stock }}">
                                     </div>
                                     <div class="col-6 d-grid">
-                                        <button type="submit" class="btn btn-warning"><i class="bx bx-cart-alt"></i> Add to
-                                            cart</button>
+                                        <button type="submit" class="btn btn-warning">
+                                            <i class="bx bx-cart-alt"></i> Beli Sekarang
+                                        </button>
                                     </div>
                                     <div class="col-3">
                                         <a class="btn btn-light" href="#"><i class="bx bx-heart"></i></a>
@@ -68,8 +72,9 @@
                                 </div>
                             </form>
                         @else
-                            <div class="alert alert-warning mt-3">Stok habis</div>
+                            <div class="alert alert-danger">Stok habis</div>
                         @endif
+
 
                         <hr class="my-4">
 

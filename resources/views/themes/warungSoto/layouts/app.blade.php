@@ -19,5 +19,6 @@
 
 
     <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @yield('scripts')
 </body>
 </html>

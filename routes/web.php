@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserProductController;
 use Illuminate\Support\Facades\Auth;
@@ -38,6 +39,9 @@ Route::post('/admin/products/{id}/delete', [ProductController::class, 'destroy']
 Route::get('/home', [UserProductController::class, 'showProductsToUser'])->name('products.showProductsToUser');
 Route::get('/products/{slug}', [UserProductController::class, 'show'])->name('products.show');
 
+Route::post('/checkout', [CheckoutController::class, 'process'])->name("checkout-process");
+Route::get('/checkout/{transaction}', [CheckoutController::class, 'checkout'])->name('checkout');
+Route::get('/checkout/success/{transaction}', [CheckoutController::class, 'success'])->name('checkout-success');
 
 
 
