@@ -8,6 +8,7 @@
 
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/main.css">
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/themes/main.css'])
@@ -17,7 +18,7 @@
 <body>
     @include('themes.warungSoto.shared.header')
     {{-- @yield('content') --}}
-    <main class="py-5 mt-5">
+    <main>
         @yield('content')
     </main>
 

@@ -13,7 +13,7 @@
                             class="bx bx-search"></i></button>
                 </div>
                 <ul class="navbar-nav ms-auto mt-3 mt-sm-0">
-                    <li class="nav-item me-3">
+                    {{-- <li class="nav-item me-3">
                         <a class="nav-link active" href="#">
                             <i class="bx bx-heart"></i>
                             <span class="badge text-bg-warning rounded-circle position-absolute">2</span>
@@ -24,7 +24,7 @@
                             <i class="bx bx-cart-alt"></i>
                             <span class="badge text-bg-warning rounded-circle position-absolute">3</span>
                         </a>
-                    </li>
+                    </li> --}}
                     <!-- mobile menu -->
                     <div class="dropdown mt-3 d-lg-none">
                         <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1"
@@ -58,25 +58,27 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
+                                                <div class="dropdown">
+                        <a id="navbarDropdown"
+                            class="nav-link dropdown-toggle fw-semibold text-dark d-flex align-items-center gap-2"
+                            href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" v-pre>
+                            <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=0D8ABC&color=fff"
+                                alt="avatar" class="rounded-circle" width="32" height="32">
+                            <span>{{ Auth::user()->name }}</span>
+                        </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="">
-                                        Transaksi Saya
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        Keluar
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+                        <div class="dropdown-menu dropdown-menu-end shadow rounded-3" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item d-flex align-items-center gap-2 text-danger fw-semibold"
+                                href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="bi bi-box-arrow-right fs-5"></i> Keluar
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </div>
                         @endguest
                     </ul>
                     {{-- <li class="nav-item mt-5 mt-lg-0 text-center">

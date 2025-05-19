@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserProductController;
 use Illuminate\Support\Facades\Auth;
@@ -39,6 +40,8 @@ Route::middleware(['auth', 'is_admin'])->group(function () {
 
     //delete data for admin
     Route::post('/admin/products/{id}/delete', [ProductController::class, 'destroy'])->name('products.destroy');
+
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 });
 
 Auth::routes();

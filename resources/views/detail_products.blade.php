@@ -101,7 +101,7 @@
                                 </tr>
                                 <tr>
                                     <td>Kategori:</td>
-                                    <td>{{ $detail_product->category->name ?? '-' }}</td>
+                                    <td>{{ $detail_product->category}}</td>
                                 </tr>
                                 <tr>
                                     <td>Pengiriman:</td>

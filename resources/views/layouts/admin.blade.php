@@ -8,6 +8,7 @@
 
     {{-- Bootstrap CDN --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
     {{-- Font Awesome for icons (optional) --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -88,7 +89,7 @@
     {{-- Sidebar --}}
     <div class="sidebar" id="sidebar">
         <h4 class="p-3 border-bottom">🛒 Warung Soto</h4>
-        <a href="{{ url('/admin') }}">🏠 Dashboard</a>
+        <a href="{{ url('admin/dashboard') }}">🏠 Dashboard</a>
         <a href="{{ url('/admin/products') }}">📦 Produk</a>
         <a href="{{ url('/admin/categories') }}">🗂 Kategori</a>
         <a href="{{ url('/admin/orders') }}">🧾 Pesanan</a>
@@ -124,18 +125,20 @@
             <div class="ms-auto">
                 @auth
                     <div class="dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle fw-bold text-dark" href="#"
-                            role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            👤 {{ Auth::user()->name }}
+                        <a id="navbarDropdown"
+                            class="nav-link dropdown-toggle fw-semibold text-dark d-flex align-items-center gap-2"
+                            href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" v-pre>
+                            <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=0D8ABC&color=fff"
+                                alt="avatar" class="rounded-circle" width="32" height="32">
+                            <span>{{ Auth::user()->name }}</span>
                         </a>
 
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">
-                                Transaksi Saya
-                            </a>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
+                        <div class="dropdown-menu dropdown-menu-end shadow rounded-3" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item d-flex align-items-center gap-2 text-danger fw-semibold"
+                                href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Keluar
+                                <i class="bi bi-box-arrow-right fs-5"></i> Keluar
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf

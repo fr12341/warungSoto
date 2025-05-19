@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <a href="{{ route('products.create') }}" class="btn btn-primary mb-3">➕ Tambah Produk</a>
+    <a href="{{ route('products.create') }}" class="btn btn-primary mb-4"><i class="bi bi-plus-square"></i> Tambah Produk</a>
 
     <table class="table table-bordered table-striped">
         <thead class="table-dark">
@@ -11,7 +11,6 @@
                 <th>Kategori</th>
                 <th>Harga</th>
                 <th>Stok</th>
-                {{-- <th>Gambar</th> --}}
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -23,19 +22,11 @@
                 <td>{{ $product->category }}</td>
                 <td>Rp{{ number_format($product->price, 0, ',', '.') }}</td>
                 <td>{{ $product->stock }}</td>
-                {{-- <td>
-                    @if ($product->image)
-                        <img src="{{ asset('storage/' . $product->image) }}" width="60" alt="Image">
-                    @else
-                        <span class="text-muted">-</span>
-                    @endif
-                </td> --}}
                 <td>
-                    <a href="{{ route('products.edit', $product->id) }}" class="btn btn-sm btn-warning">✏️ Edit</a>
+                    <a href="{{ route('products.edit', $product->id) }}" class="btn btn-sm btn-warning"><i class="bi bi-pencil-square"></i> Edit</a>
                     <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin hapus?')">
                         @csrf
-                        {{-- @method('DELETE') --}}
-                        <button class="btn btn-sm btn-danger">🗑️ Hapus</button>
+                        <button class="btn btn-sm btn-danger"><i class="bi bi-trash3"></i> Hapus</button>
                     </form>
                 </td>
             </tr>
