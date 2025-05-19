@@ -134,9 +134,9 @@
     </section>
 
     <!-- Subscribe  -->
-    <section class="subscribe">
+    {{-- <section class="subscribe">
         <div class="container">
-            <div class="subscribe-wrapper">
+            <div class="subscribe-wrapper" >
                 <div class="row justify-content-center text-center">
                     <div class="col-lg-6 col-md-7 col-10 col-sub">
                         <h1>Subscribe to get latest updates!</h1>
@@ -150,5 +150,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 @endsection

@@ -8,37 +8,37 @@
 
         <div class="mb-3">
             <label for="name" class="form-label">Nama Produk</label>
-            <input type="text" name="name" id="name" class="form-control" 
-                value="{{ old('name', $product->name) }}" required>
+            <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $product->name) }}"
+                required>
         </div>
 
         <div class="mb-3">
             <label for="slug" class="form-label">Slug</label>
-            <input type="text" name="slug" id="slug" class="form-control" 
+            <input type="text" name="slug" id="slug" class="form-control"
                 value="{{ old('slug', $product->slug) }}" required>
         </div>
 
         <div class="mb-3">
-            <label for="category_id" class="form-label">Kategori</label>
-            <select name="category_id" id="category_id" class="form-select" required>
-                @foreach ($categories as $category)
-                    <option value="{{ $category->id }}" 
-                        {{ $product->category_id == $category->id ? 'selected' : '' }}>
-                        {{ $category->name }}
+            <label for="category" class="form-label">Kategori</label>
+            <select name="category" id="category" class="form-select" required>
+                @foreach (['makanan', 'minuman', 'snack'] as $category)
+                    <option value="{{ $category }}" {{ $product->category === $category ? 'selected' : '' }}>
+                        {{ ucfirst($category) }}
                     </option>
                 @endforeach
             </select>
         </div>
 
+
         <div class="mb-3">
             <label for="price" class="form-label">Harga</label>
-            <input type="number" name="price" id="price" class="form-control" 
+            <input type="number" name="price" id="price" class="form-control"
                 value="{{ old('price', $product->price) }}" required>
         </div>
 
         <div class="mb-3">
             <label for="stock" class="form-label">Stok</label>
-            <input type="number" name="stock" id="stock" class="form-control" 
+            <input type="number" name="stock" id="stock" class="form-control"
                 value="{{ old('stock', $product->stock) }}" required>
         </div>
 

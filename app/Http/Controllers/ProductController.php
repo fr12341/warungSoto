@@ -33,7 +33,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'category_id' => 'required|exists:categories,id',
+            'category' => 'required|in:makanan,minuman,snack',
             'name' => 'required|string|max:255',
             'slug' => 'required|unique:products,slug',
             'description' => 'nullable|string',
@@ -80,6 +80,7 @@ class ProductController extends Controller
             'name' => 'sometimes|string|max:255',
             'slug' => 'sometimes|unique:products,slug,' . $id,
             'description' => 'nullable|string',
+            'category' => 'required|in:makanan,minuman,snack',
             'price' => 'sometimes|numeric|min:0',
             'stock' => 'sometimes|integer|min:0',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
@@ -106,7 +107,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->delete();
 
-        return response()->json(['message' => 'Product deleted']);
+        return redirect()->route('products.index')->with('success', 'Produk berhasil dihapus!');
 
     }
 }

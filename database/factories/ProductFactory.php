@@ -17,7 +17,7 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-        'category_id' => \App\Models\Category::factory(),
+        'category' => $this->faker->randomElement(['makanan', 'minuman', 'snack']),
         'name' => $this->faker->randomElement([
         'Soto Ayam', 'Soto Daging', 'Soto Betawi', 'Soto Banjar', 'Soto Lamongan'
         ]),

@@ -11,27 +11,30 @@ class DatabaseSeeder extends Seeder
      * Seed the application's database.
      */
     public function run(): void
-    {
-        \App\Models\User::factory(10)->create();
+{
+    // Buat 10 user random
+    \App\Models\User::factory(10)->create();
 
-        \App\Models\User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+    // Buat 1 user test
+    \App\Models\User::factory()->create([
+        'name' => 'Test User',
+        'email' => 'test@example.com',
+    ]);
 
-        // Buat users
-        \App\Models\User::factory(5)->create();
-        // Buat kategori dan produk
-        \App\Models\Category::factory(5)->create()->each(function ($category) {
-        // \App\Models\Product::factory(5)->create([
-        //     'category_id' => $category->id
-        // ]);
-        // Buat alamat untuk tiap user
-        \App\Models\User::all()->each(function ($user) {
-        \App\Models\Address::factory()->create([
-            'user_id' => $user->id
+    // Buat 5 produk untuk masing-masing kategori enum
+    $categories = ['makanan', 'minuman', 'snack'];
+    foreach ($categories as $category) {
+        \App\Models\Product::factory(5)->create([
+            'category' => $category,
         ]);
-        });
-    });
     }
+
+    // Buat address untuk tiap user
+    \App\Models\User::all()->each(function ($user) {
+        \App\Models\Address::factory()->create([
+            'user_id' => $user->id,
+        ]);
+    });
+}
+
 }

@@ -38,8 +38,8 @@ color: #6f42c1;
 .btn-first {
 padding: 12px 24px !important;
 border-radius: 8px;
-border: 1px solid #B4D51E;
-background-color: #B4D51E;
+border: 1px solid #228B22;
+background-color: #228B22;
 color: #FFF;
 }
 .btn-first:hover {
@@ -50,19 +50,19 @@ color: #efecec;
 .btn-second {
 padding: 12px 24px !important;
 border-radius: 8px;
-border: 1px solid #B4D51E;
-color: #B4D51E;
+border: 1px solid #228B22;
+color: #228B22;
 }
 .btn-second:hover {
-background-color: #B4D51E;
+background-color: #228B22;
 color: #FFF;
 }
 
 .btn-first-sm {
 padding: 6px 12px !important;
 border-radius: 5px;
-border: 1px solid #B4D51E !important;
-background-color: #B4D51E !important;
+border: 1px solid #228B22 !important;
+background-color: #228B22 !important;
 color: #FFF;
 font-size: 0.875rem !important;
 }
@@ -72,8 +72,8 @@ color: #efecec;
 }
 
 .btn-add-cart {
-border: 1px solid #B4D51E;
-background-color: #B4D51E;
+border: 1px solid #228B22;
+background-color: #228B22;
 color: #FFF;
 }
 .btn-add-cart:hover {
@@ -91,12 +91,12 @@ width: 100%;
 }
 
 .navbar .navbar-brand {
-color: #463C74;
+color: #8B5E3C;
 font-size: 22px;
 font-weight: 700;
 }
 .navbar .navbar-brand span {
-color: #B4D51E;
+color: #228B22;
 }
 .navbar .nav-item i {
 font-size: 25px;
@@ -137,7 +137,7 @@ margin-top: 150px;
 .popular .product-name, .latest .product-name {
 font-size: 16px;
 font-weight: 300;
-color: #463C74;
+color: #8B5E3C;
 }
 @media (max-width: 575.98px) {
 .popular .product-name, .latest .product-name {
@@ -147,7 +147,7 @@ font-size: 14px;
 .popular .price, .latest .price {
 font-size: 18px;
 font-weight: 700;
-color: #463C74;
+color: #8B5E3C;
 }
 @media (max-width: 575.98px) {
 .popular .price, .latest .price {
@@ -169,7 +169,7 @@ padding: 6px 8px;
 }
 .popular .btn-cart i, .latest .btn-cart i {
 font-size: 30px;
-color: #463C74;
+color: #8B5E3C;
 }
 @media (max-width: 575.98px) {
 .popular .btn-cart i, .latest .btn-cart i {
@@ -180,7 +180,7 @@ font-size: 16px;
 .products .product-name {
 font-size: 16px;
 font-weight: 300;
-color: #463C74;
+color: #8B5E3C;
 }
 @media (max-width: 575.98px) {
 .products .product-name {
@@ -193,7 +193,7 @@ margin-top: 20px;
 .products .price {
 font-size: 18px;
 font-weight: 700;
-color: #463C74;
+color: #8B5E3C;
 }
 @media (max-width: 575.98px) {
 .products .price {
@@ -215,7 +215,7 @@ padding: 6px 8px;
 }
 .products .btn-cart i {
 font-size: 30px;
-color: #463C74;
+color: #8B5E3C;
 }
 @media (max-width: 575.98px) {
 .products .btn-cart i {
@@ -445,20 +445,20 @@ font-weight: 500;
 
 footer {
 margin-top: 150px;
-background-color: #463C74;
+background-color: #8B5E3C;
 color: #ced4da;
 font-size: 14px;
 }
 footer .row-content .logo-brand {
 font-size: 30px;
-color: #B4D51E;
+color: #228B22;
 }
 footer .row-content .logo-brand span {
-color: #B4D51E;
+color: #228B22;
 }
 footer .row-content h3 {
 font-size: 25px;
-color: #B4D51E;
+color: #228B22;
 }
 footer .row-content a {
 color: #ced4da;
@@ -468,5 +468,5 @@ color: #faf5d2;
 }
 footer .row-copy i {
 font-size: 25px;
-color: #B4D51E;
+color: #228B22;
 }/*# sourceMappingURL=main.css.map */
