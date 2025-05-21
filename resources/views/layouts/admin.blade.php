@@ -10,9 +10,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
-    {{-- Font Awesome for icons (optional) --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
     <style>
         body {
             overflow-x: hidden;
@@ -24,14 +21,11 @@
             position: fixed;
             top: 0;
             left: 0;
-            background-color: #228B22;
+            background-color: #198754;
+            /* Bootstrap bg-success */
             color: white;
             transition: all 0.3s ease;
             z-index: 1000;
-        }
-
-        .sidebar.hidden {
-            transform: translateX(-100%);
         }
 
         .sidebar a {
@@ -42,7 +36,8 @@
         }
 
         .sidebar a:hover {
-            background-color: #495057;
+            background-color: #157347;
+            /* darker green on hover */
         }
 
         .content {
@@ -88,38 +83,23 @@
 
     {{-- Sidebar --}}
     <div class="sidebar" id="sidebar">
-        <h4 class="p-3 border-bottom">🛒 Warung Soto</h4>
-        <a href="{{ url('admin/dashboard') }}">🏠 Dashboard</a>
-        <a href="{{ url('/admin/products') }}">📦 Produk</a>
-        <a href="{{ url('/admin/categories') }}">🗂 Kategori</a>
-        <a href="{{ url('/admin/orders') }}">🧾 Pesanan</a>
-        <a href="{{ url('/admin/customers') }}">👥 Pelanggan</a>
-        <a href="{{ url('/admin/settings') }}">⚙️ Pengaturan</a>
+        <h4 class="p-3 border-bottom text-center d-flex flex-column align-items-center">
+            <i class="bi bi-shop fs-2 mb-1"></i>
+            <span class="fs-5">Warung Soto</span>
+        </h4>
 
+        <a href="{{ url('admin/dashboard') }}"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
+        <a href="{{ url('/admin/products') }}"><i class="bi bi-box-seam me-2"></i>Produk</a>
+        <a href="{{ url('/admin/transactions') }}"><i class="bi bi-people me-2"></i>Pelanggan</a>
+        <a href="{{ url('/admin/settings') }}"><i class="bi bi-gear me-2"></i>Pengaturan</a>
     </div>
 
     {{-- Content --}}
-    {{-- <div class="content" id="content">
-        Top Bar
-        <div class="topbar">
-            <button class="btn btn-outline-secondary btn-sm d-md-none" onclick="toggleSidebar()">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="ms-auto fw-bold">👤 Admin</div>
-        </div>
-
-        <div class="mt-3">
-            <h2>@yield('title')</h2>
-            <hr>
-            @yield('content')
-        </div>
-    </div> --}}
-
     <div class="content" id="content">
         {{-- Top Bar --}}
         <div class="topbar d-flex align-items-center justify-content-between px-3 py-2 border-bottom bg-light">
-            <button class="btn btn-outline-secondary btn-sm d-md-none" onclick="toggleSidebar()">
-                <i class="fas fa-bars"></i>
+            <button class="btn btn-outline-success btn-sm d-md-none" onclick="toggleSidebar()">
+                <i class="bi bi-list"></i>
             </button>
 
             <div class="ms-auto">
@@ -128,8 +108,8 @@
                         <a id="navbarDropdown"
                             class="nav-link dropdown-toggle fw-semibold text-dark d-flex align-items-center gap-2"
                             href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false" v-pre>
-                            <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=0D8ABC&color=fff"
+                            aria-expanded="false">
+                            <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=198754&color=fff"
                                 alt="avatar" class="rounded-circle" width="32" height="32">
                             <span>{{ Auth::user()->name }}</span>
                         </a>
@@ -147,8 +127,8 @@
                     </div>
                 @else
                     <div>
-                        <a href="{{ route('login') }}" class="btn btn-sm btn-outline-primary">Login</a>
-                        <a href="{{ route('register') }}" class="btn btn-sm btn-primary">Register</a>
+                        <a href="{{ route('login') }}" class="btn btn-sm btn-outline-success">Login</a>
+                        <a href="{{ route('register') }}" class="btn btn-sm btn-success">Register</a>
                     </div>
                 @endauth
             </div>
@@ -161,8 +141,6 @@
             @yield('content')
         </div>
     </div>
-
-
 
     {{-- JS for toggling sidebar --}}
     <script>

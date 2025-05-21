@@ -23,10 +23,14 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function addresses()
-{
-    return $this->hasMany(Address::class);
-}
+//     public function address()
+// {
+//     return $this->hasOne(Address::class);;
+// }
+// public function primaryAddress()
+// {
+//     return $this->hasOne(Address::class)->latestOfMany(); 
+// }
 
 public function cart()
 {

@@ -42,6 +42,8 @@ Route::middleware(['auth', 'is_admin'])->group(function () {
     Route::post('/admin/products/{id}/delete', [ProductController::class, 'destroy'])->name('products.destroy');
 
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+    Route::get('/admin/transactions', [DashboardController::class, 'transaction'])->name('transactions.index');
 });
 
 Auth::routes();
