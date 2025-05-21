@@ -12,10 +12,12 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    
     public function index()
     {
-            $products = Product::latest()->paginate(10);
-            return view('product.index', compact('products'));
+        $products = Product::latest()->paginate(10);
+        return view('product.index', compact('products'));
     }
 
     /**
@@ -23,8 +25,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-            $product = Product::all();
-            return view('product.create', compact('product'));
+        $product = Product::all();
+        return view('product.create', compact('product'));
     }
 
     /**
@@ -43,20 +45,25 @@ class ProductController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-        $validated['image'] = $request->file('image')->store('products', 'public');
+            $validated['image'] = $request->file('image')->store('products', 'public');
         }
 
         $product = Product::create($validated);
         return redirect()->route('products.index')->with('success', 'Product created successfully.');
-
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($id)
-    {
+    public function show($id) {}
 
+    public function search(Request $request)
+    {
+        $query = $request->input('q');
+        $popularProducts = Product::where('name', 'like', '%' . $query . '%')->paginate(5);
+        $latestProducts = Product::where('name', 'like', '%' . $query . '%')->paginate(5);
+
+        return view('themes.warungSoto.home', compact('popularProducts','latestProducts', 'query'));
     }
 
     /**
@@ -86,16 +93,15 @@ class ProductController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-        // Hapus image lama jika ada
-        if ($product->image && Storage::disk('public')->exists($product->image)) {
-            Storage::disk('public')->delete($product->image);
+            // Hapus image lama jika ada
+            if ($product->image && Storage::disk('public')->exists($product->image)) {
+                Storage::disk('public')->delete($product->image);
+            }
+            $validated['image'] = $request->file('image')->store('products', 'public');
         }
-        $validated['image'] = $request->file('image')->store('products', 'public');
-    }
 
         $product->update($validated);
         return redirect()->route('products.index')->with('success', 'Product created successfully.');
-
     }
 
     /**
@@ -107,6 +113,5 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('products.index')->with('success', 'Produk berhasil dihapus!');
-
     }
 }

@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [UserProductController::class, 'showProductsToUser']);
-
+Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
 Route::get('/home', [UserProductController::class, 'showProductsToUser'])->name('products.showProductsToUser');
 Route::get('/products/{slug}', [UserProductController::class, 'show'])->name('products.show');
 Route::post('/checkout', [CheckoutController::class, 'process'])->name('checkout-process');

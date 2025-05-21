@@ -5,16 +5,18 @@
     <!-- Popular -->
     <section class="popular">
         <div class="container">
+                        @if (isset($query))
+                <p>Hasil pencarian untuk: <strong>{{ $query }}</strong></p>
+            @endif
+        </div>
+        <div class="container">
             <div class="row align-items-center">
                 <div class="col-6">
                     <h1>Popular</h1>
                 </div>
-                <div class="col-6 text-end">
-                    <a href="#" class="btn-first">View All</a>
-                </div>
             </div>
             <div class="row mt-5">
-                @foreach ($products as $product)
+                @foreach ($popularProducts as $product)
                     <div class="col-lg-3 col-6">
                         <div class="card card-product card-body p-lg-4 p-3">
                             <a href="{{ route('products.show', $product->slug) }}">
@@ -40,7 +42,7 @@
                 @endforeach
             </div>
             <div class="mt-4">
-                {{ $products->links() }}
+                {{ $popularProducts->links() }}
             </div>
         </div>
     </section>
@@ -52,83 +54,35 @@
                 <div class="col-6">
                     <h1>Latest</h1>
                 </div>
-                <div class="col-6 text-end">
-                    <a href="product.html" class="btn-first">View All</a>
-                </div>
             </div>
             <div class="row mt-5">
-                <div class="col-lg-3 col-6">
-                    <div class="card card-product card-body p-lg-4 p3">
-                        <a href="product.html"><img src="{{ asset('themes/assets/img/soto.png') }}" alt=""
-                                class="img-fluid"></a>
-                        <h3 class="product-name mt-3">Product 1</h3>
-                        <div class="rating">
-                            <i class="bx bxs-star"></i>
-                            <i class="bx bxs-star"></i>
-                            <i class="bx bxs-star"></i>
-                            <i class="bx bxs-star"></i>
-                            <i class="bx bxs-star"></i>
-                        </div>
-                        <div class="detail d-flex justify-content-between align-items-center mt-4">
-                            <p class="price">IDR 200.000</p>
-                            <a href="product.html" class="btn-cart"><i class="bx bx-cart-alt"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-6">
-                    <div class="card card-product card-body p-lg-4 p3">
-                        <a href="product.html"><img src="{{ asset('themes/assets/img/soto.png') }}" alt=""
-                                class="img-fluid"></a>
-                        <h3 class="product-name mt-3">Product 2</h3>
-                        <div class="rating">
-                            <i class="bx bxs-star"></i>
-                            <i class="bx bxs-star"></i>
-                            <i class="bx bxs-star"></i>
-                            <i class="bx bxs-star"></i>
-                            <i class="bx bxs-star"></i>
-                        </div>
-                        <div class="detail d-flex justify-content-between align-items-center mt-4">
-                            <p class="price">IDR 200.000</p>
-                            <a href="product.html" class="btn-cart"><i class="bx bx-cart-alt"></i></a>
+                @foreach ($latestProducts as $product)
+                    <div class="col-lg-3 col-6">
+                        <div class="card card-product card-body p-lg-4 p-3">
+                            <a href="{{ route('products.show', $product->slug) }}">
+                                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
+                                    class="img-fluid">
+                            </a>
+                            <h3 class="product-name mt-3">{{ $product->name }}</h3>
+                            <div class="rating">
+                                <i class="bx bxs-star"></i>
+                                <i class="bx bxs-star"></i>
+                                <i class="bx bxs-star"></i>
+                                <i class="bx bxs-star"></i>
+                                <i class="bx bxs-star"></i>
+                            </div>
+                            <div class="detail d-flex justify-content-between align-items-center mt-4">
+                                <p class="price">IDR {{ number_format($product->price, 0, ',', '.') }}</p>
+                                <a href="{{ route('products.show', $product->slug) }}" class="btn-cart">
+                                    <i class="bx bx-cart-alt"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-6 mt-3 mt-lg-0">
-                    <div class="card card-product card-body p-lg-4 p3">
-                        <a href="product.html"><img src="{{ asset('themes/assets/img/soto.png') }}" alt=""
-                                class="img-fluid"></a>
-                        <h3 class="product-name mt-3">Product 3</h3>
-                        <div class="rating">
-                            <i class="bx bxs-star"></i>
-                            <i class="bx bxs-star"></i>
-                            <i class="bx bxs-star"></i>
-                            <i class="bx bxs-star"></i>
-                            <i class="bx bxs-star"></i>
-                        </div>
-                        <div class="detail d-flex justify-content-between align-items-center mt-4">
-                            <p class="price">IDR 200.000</p>
-                            <a href="product.html" class="btn-cart"><i class="bx bx-cart-alt"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-6 mt-3 mt-lg-0">
-                    <div class="card card-product card-body p-lg-4 p3">
-                        <a href="product.html"><img src="{{ asset('themes/assets/img/soto.png') }}" alt=""
-                                class="img-fluid"></a>
-                        <h3 class="product-name mt-3">Product 4</h3>
-                        <div class="rating">
-                            <i class="bx bxs-star"></i>
-                            <i class="bx bxs-star"></i>
-                            <i class="bx bxs-star"></i>
-                            <i class="bx bxs-star"></i>
-                            <i class="bx bxs-star"></i>
-                        </div>
-                        <div class="detail d-flex justify-content-between align-items-center mt-4">
-                            <p class="price">IDR 200.000</p>
-                            <a href="product.html" class="btn-cart"><i class="bx bx-cart-alt"></i></a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+            </div>
+            <div class="mt-4">
+                {{ $latestProducts->links() }}
             </div>
         </div>
     </section>
