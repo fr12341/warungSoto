@@ -91,7 +91,7 @@
         <a href="{{ url('admin/dashboard') }}"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
         <a href="{{ url('/admin/products') }}"><i class="bi bi-box-seam me-2"></i>Produk</a>
         <a href="{{ url('/admin/transactions') }}"><i class="bi bi-people me-2"></i>Pelanggan</a>
-        <a href="{{ url('/admin/settings') }}"><i class="bi bi-gear me-2"></i>Pengaturan</a>
+        {{-- <a href="{{ url('/admin/settings') }}"><i class="bi bi-gear me-2"></i>Pengaturan</a> --}}
     </div>
 
     {{-- Content --}}

@@ -22,6 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+    
 
 //     public function address()
 // {
@@ -32,15 +33,6 @@ class User extends Authenticatable
 //     return $this->hasOne(Address::class)->latestOfMany(); 
 // }
 
-public function cart()
-{
-    return $this->hasOne(Cart::class);
-}
-
-public function orders()
-{
-    return $this->hasMany(Order::class);
-}
 
     /**
      * The attributes that should be hidden for serialization.
@@ -60,5 +52,6 @@ public function orders()
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'is_admin' => 'boolean',
     ];
 }

@@ -30,11 +30,11 @@ class DatabaseSeeder extends Seeder
     }
 
     // Buat address untuk tiap user
-    \App\Models\User::all()->each(function ($user) {
-        \App\Models\Address::factory()->create([
-            'user_id' => $user->id,
-        ]);
-    });
+    // \App\Models\User::all()->each(function ($user) {
+    //     \App\Models\Address::factory()->create([
+    //         'user_id' => $user->id,
+    //     ]);
+    // });
 
     $this->call(AdminSeeder::class);
 }
